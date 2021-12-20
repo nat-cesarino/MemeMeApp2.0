@@ -17,29 +17,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomText: UITextField!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
-    struct Meme {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage?
-        var memedImage: UIImage?
-    }
-    
+
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topText.defaultTextAttributes = memeTextAttributes
-        topText.text = "TOP"
-        topText.textAlignment = .center
-        topText.delegate = self
-        bottomText.defaultTextAttributes = memeTextAttributes
-        bottomText.text = "BOTTOM"
-        bottomText.textAlignment = .center
-        bottomText.delegate = self
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupTextField(topText, text: "TOP")
+        setupTextField(bottomText, text: "BOTTOM")
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         shareButton.isEnabled = false
@@ -53,7 +42,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //MARK: Methods
     
-    // Image Controller
+    //Setup text field
+    func setupTextField(_ textField: UITextField, text: String) {
+    // TODO: Set text field attributes, delegate, and text here
+        topText.defaultTextAttributes = memeTextAttributes
+        topText.textAlignment = .center
+        topText.delegate = self
+        bottomText.defaultTextAttributes = memeTextAttributes
+        bottomText.textAlignment = .center
+        bottomText.delegate = self
+    }
+    
+    
+    // Image Picker Controller
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true, completion: nil)
         if let image = info[.originalImage] as? UIImage {
@@ -67,19 +68,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion: nil)
     }
     
-    
-    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
+    // Choosing image from different sources
+    func presentPickerViewController(source: UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = source
         present(imagePicker, animated: true, completion: nil)
     }
     
+    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
+        presentPickerViewController(source: .photoLibrary)
+    }
+    
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+        presentPickerViewController(source: .camera)
     }
     
     // When user taps textfield, default text clears
@@ -103,7 +105,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40) as Any,
-        NSAttributedString.Key.strokeWidth: 5
+        NSAttributedString.Key.strokeWidth: -5
     ]
     
     // Sign up to be notified when the keyboard appears

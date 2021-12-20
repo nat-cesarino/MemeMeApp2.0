@@ -16,6 +16,7 @@
 		2E564DBB276FF45400CB6217 /* MemeMeApp1_0Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E564DBA276FF45400CB6217 /* MemeMeApp1_0Tests.swift */; };
 		2E564DC5276FF45400CB6217 /* MemeMeApp1_0UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E564DC4276FF45400CB6217 /* MemeMeApp1_0UITests.swift */; };
 		2E564DC7276FF45400CB6217 /* MemeMeApp1_0UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E564DC6276FF45400CB6217 /* MemeMeApp1_0UITestsLaunchTests.swift */; };
+		2E5B54F82770B8BE00DF27AE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5B54F72770B8BE00DF27AE /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		2E564DC0276FF45400CB6217 /* MemeMeApp1.0UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemeMeApp1.0UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E564DC4276FF45400CB6217 /* MemeMeApp1_0UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeApp1_0UITests.swift; sourceTree = "<group>"; };
 		2E564DC6276FF45400CB6217 /* MemeMeApp1_0UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeApp1_0UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2E5B54F72770B8BE00DF27AE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				2E564DA3276FF45200CB6217 /* AppDelegate.swift */,
 				2E564DA5276FF45200CB6217 /* SceneDelegate.swift */,
 				2E564DA7276FF45200CB6217 /* ViewController.swift */,
+				2E5B54F72770B8BE00DF27AE /* Model.swift */,
 				2E564DA9276FF45200CB6217 /* Main.storyboard */,
 				2E564DAC276FF45400CB6217 /* Assets.xcassets */,
 				2E564DAE276FF45400CB6217 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 				2E564DA8276FF45200CB6217 /* ViewController.swift in Sources */,
 				2E564DA4276FF45200CB6217 /* AppDelegate.swift in Sources */,
 				2E564DA6276FF45200CB6217 /* SceneDelegate.swift in Sources */,
+				2E5B54F82770B8BE00DF27AE /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
