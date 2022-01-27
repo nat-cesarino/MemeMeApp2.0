@@ -12,4 +12,9 @@ class SentMemeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var sentMemeImageView: UIImageView!
     
+    @IBOutlet weak var topLabel: UILabel!
+    
+    @IBOutlet weak var bottomLabel: UILabel!
+    
+    
 }

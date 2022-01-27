@@ -111,11 +111,11 @@
 			children = (
 				2E564DA3276FF45200CB6217 /* AppDelegate.swift */,
 				2E564DA5276FF45200CB6217 /* SceneDelegate.swift */,
-				2E564DA7276FF45200CB6217 /* EditorViewController.swift */,
 				2E3F4C63279AF44700A37B49 /* SentMemesTableViewController.swift */,
 				2E3F4C65279AF45800A37B49 /* SentMemesCollectionViewController.swift */,
 				2E3F4C67279B3B6D00A37B49 /* SentMemeCollectionViewCell.swift */,
 				2E3F4C69279B512B00A37B49 /* SentMemeDetailViewController.swift */,
+				2E564DA7276FF45200CB6217 /* EditorViewController.swift */,
 				2E5B54F72770B8BE00DF27AE /* Model.swift */,
 				2E564DA9276FF45200CB6217 /* Main.storyboard */,
 				2E564DAC276FF45400CB6217 /* Assets.xcassets */,
