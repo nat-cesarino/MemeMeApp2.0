@@ -51,7 +51,6 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }
-    
 }
 
 

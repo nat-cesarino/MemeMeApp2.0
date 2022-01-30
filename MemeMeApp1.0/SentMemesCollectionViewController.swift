@@ -4,23 +4,16 @@
 //
 //  Created by Nathalie Cesarino on 21/01/22.
 //
-
 import Foundation
 import UIKit
 
-private let reuseIdentifier = "SentMemeCollectionViewCell"
-
-class SentMemesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class SentMemesCollectionViewController: UIViewController {
     
-    // MARK: Properties
+    var memes = [Meme]()
     
-    //Array of memes
-    var memes: [Meme]! {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.memes
-    }
+    // MARK: Outlets
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     
@@ -28,64 +21,96 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let space: CGFloat = 3.0
-        let dimension_width = (view.frame.size.width - (2*space)) / 3.0
-        let dimension_height = (view.frame.size.height - (2*space)) / 3.0
-        
-        // Size between items within a row or column
-        flowLayout.minimumInteritemSpacing = space
-        
-        // Size between rows or columns
-        flowLayout.minimumLineSpacing = space
-        
-        // Size of your cells:
-        flowLayout.itemSize = CGSize(width: dimension_width, height: dimension_height)
-        
+        setupCollectionView()
+        setupFlowLayout()
+        setupNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.collectionView.reloadData()
+        setupNavigationBar()
+        memes = getMemes()
+        collectionView.reloadData()
+    }
+    
+    // Setup Navigation Bar
+    private func setupNavigationBar() {
+        navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
-        }
-    
-    // MARK: Collection View Data Source
-    
-    // Returns the amount of itens in collection
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.memes.count
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createMeme))
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    // Retrieve Saved Memes
+    private func getMemes() -> [Meme] {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+    }
+    
+    // Add the setup for the collection view
+    private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    // Setup Flow Layout
+    private func setupFlowLayout(){
+        let space: CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2*space)) / 3.0
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SentMemeCollectionViewCell
-        
-        //Configure the cell
-        let meme = self.memes[(indexPath as NSIndexPath).row]
-        
-        //Set the image
-        cell.sentMemeImageView.image = meme.memedImage
+        // Size between items within a row or column
+        flowLayout.minimumInteritemSpacing = space
+        // Size between rows or columns
+        flowLayout.minimumLineSpacing = space
+        // Size of your cells:
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+    }
+    
+    // Call the Editor view controller
+    @objc func createMeme() {
+        let editorViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditorViewController") as! EditorViewController
+        self.present(editorViewController, animated: true, completion: nil)
+    }
 
-        return cell
-        
-    }
+}
     
-    // MARK: Collection View Delegate
+    // MARK: Collection View Setup
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
-        // Grab the DetailVC from Storyboard
-        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "SentMemeDetailViewController") as! SentMemeDetailViewController
+        // Collection View Data Source
         
-        // Populate view controller with data from the selected item
-        detailController.meme = memes[(indexPath as NSIndexPath).row]
+        // Returns the amount of itens in collection
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return memes.count
+        }
         
-        //Present the view controller using navigation
-        self.navigationController!.pushViewController(detailController, animated: true)
- 
-    }
-    
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SentMemeCollectionViewCell", for: indexPath) as! SentMemeCollectionViewCell
+            
+            //Configure the cell
+            let meme = memes[(indexPath as NSIndexPath).row]
+            
+            //Set the image
+            cell.sentMemeImageView.image = meme.memedImage
+            return cell
+            
+        }
+        
+        // Collection View Delegate
+        
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            
+            // Grab the DetailVC from Storyboard
+            let detailController = self.storyboard!.instantiateViewController(withIdentifier: "SentMemeDetailViewController") as! SentMemeDetailViewController
+            
+            // Populate view controller with data from the selected item
+            detailController.meme = memes[(indexPath as NSIndexPath).row]
+            
+            //Present the view controller using navigation
+            self.navigationController!.pushViewController(detailController, animated: true)
+     
+        }
 }
 
 
