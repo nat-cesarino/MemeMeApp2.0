@@ -191,7 +191,7 @@
         <!--SentMemeDetailViewController-->
         <scene sceneID="cOm-SO-TbY">
             <objects>
-                <viewController storyboardIdentifier="SentMemeDetailViewController" title="SentMemeDetailViewController" id="eeo-qb-y6n" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SentMemeDetailViewController" title="SentMemeDetailViewController" id="eeo-qb-y6n" customClass="SentMemeDetailViewController" customModule="MemeMeApp1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2dQ-bQ-h4Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
