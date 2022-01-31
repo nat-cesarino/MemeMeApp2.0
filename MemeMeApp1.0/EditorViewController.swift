@@ -140,7 +140,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     // Create the memed image
     func generateMemedImage() -> UIImage {
-
+        
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)

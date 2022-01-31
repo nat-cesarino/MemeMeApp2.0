@@ -54,7 +54,7 @@ class SentMemesCollectionViewController: UIViewController {
     
     // Setup Flow Layout
     private func setupFlowLayout(){
-        let space: CGFloat = 3.0
+        let space: CGFloat = 2.0
         let dimension = (view.frame.size.width - (2*space)) / 3.0
         
         // Size between items within a row or column
