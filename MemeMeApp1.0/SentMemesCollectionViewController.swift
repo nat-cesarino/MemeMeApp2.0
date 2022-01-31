@@ -68,7 +68,8 @@ class SentMemesCollectionViewController: UIViewController {
     // Call the Editor view controller
     @objc func createMeme() {
         let editorViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditorViewController") as! EditorViewController
-        self.present(editorViewController, animated: true, completion: nil)
+        
+        self.navigationController?.pushViewController(editorViewController, animated: true)
     }
 
 }

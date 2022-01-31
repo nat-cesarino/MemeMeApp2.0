@@ -100,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="-951" y="532"/>
         </scene>
-        <!--View Controller-->
+        <!--Sent Memes Table View Controller-->
         <scene sceneID="K5e-lz-Tud">
             <objects>
-                <viewController id="NTZ-Nf-9hj" sceneMemberID="viewController">
+                <viewController id="NTZ-Nf-9hj" customClass="SentMemesTableViewController" customModule="MemeMeApp1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vyb-4t-rEU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,15 +112,44 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="EKx-Bi-yIb">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SentMemeTableViewCell" id="EKx-Bi-yIb" customClass="SentMemeTableViewCell" customModule="MemeMeApp1_0" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="200.33332824707031"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EKx-Bi-yIb" id="lVq-SE-5d2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200.33332824707031"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omg-1x-NcW">
+                                                    <rect key="frame" x="160" y="89.666666666666671" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kts-PJ-6PG">
+                                                    <rect key="frame" x="20" y="39.999999999999993" width="120" height="120.33333333333331"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="120" id="5bn-K2-uU1"/>
+                                                        <constraint firstAttribute="width" constant="120" id="75T-Hz-t6Z"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Omg-1x-NcW" firstAttribute="leading" secondItem="kts-PJ-6PG" secondAttribute="trailing" constant="20" id="Kt6-VA-QWH"/>
+                                                <constraint firstItem="kts-PJ-6PG" firstAttribute="leading" secondItem="lVq-SE-5d2" secondAttribute="leading" constant="20" id="RUq-J0-Fxt"/>
+                                                <constraint firstAttribute="bottom" secondItem="kts-PJ-6PG" secondAttribute="bottom" constant="40" id="cDS-Fe-g84"/>
+                                                <constraint firstItem="kts-PJ-6PG" firstAttribute="top" secondItem="lVq-SE-5d2" secondAttribute="top" constant="40" id="hek-7w-L3F"/>
+                                                <constraint firstItem="Omg-1x-NcW" firstAttribute="centerY" secondItem="lVq-SE-5d2" secondAttribute="centerY" id="yJC-72-cSF"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="memeImage" destination="kts-PJ-6PG" id="9YZ-A0-9Ue"/>
+                                            <outlet property="memeTitle" destination="Omg-1x-NcW" id="VeU-cl-EUs"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="NTZ-Nf-9hj" id="dMb-no-202"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cBU-MT-rGL"/>
@@ -133,6 +162,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oQs-HB-r4m"/>
+                    <connections>
+                        <outlet property="tableView" destination="qON-q6-Ebx" id="tWd-RX-jRv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9f-1P-KfZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
