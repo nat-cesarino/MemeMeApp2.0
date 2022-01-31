@@ -188,20 +188,34 @@
             </objects>
             <point key="canvasLocation" x="-2010" y="115"/>
         </scene>
-        <!--SentMemeDetailViewController-->
+        <!--Meme Detail-->
         <scene sceneID="cOm-SO-TbY">
             <objects>
-                <viewController storyboardIdentifier="SentMemeDetailViewController" title="SentMemeDetailViewController" id="eeo-qb-y6n" customClass="SentMemeDetailViewController" customModule="MemeMeApp1_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SentMemeDetailViewController" title="Meme Detail" id="eeo-qb-y6n" customClass="SentMemeDetailViewController" customModule="MemeMeApp1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2dQ-bQ-h4Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AZO-VQ-xTt">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="tk3-bN-eVX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AZO-VQ-xTt" firstAttribute="trailing" secondItem="tk3-bN-eVX" secondAttribute="trailing" id="Q1W-ou-XuC"/>
+                            <constraint firstItem="AZO-VQ-xTt" firstAttribute="bottom" secondItem="tk3-bN-eVX" secondAttribute="bottom" id="TqP-hw-Bad"/>
+                            <constraint firstItem="AZO-VQ-xTt" firstAttribute="leading" secondItem="tk3-bN-eVX" secondAttribute="leading" id="VNf-9V-sB0"/>
+                            <constraint firstItem="AZO-VQ-xTt" firstAttribute="top" secondItem="tk3-bN-eVX" secondAttribute="top" constant="20" id="WVK-w7-6eN"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="memeImage" destination="AZO-VQ-xTt" id="SS9-Fc-U0R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A38-xi-IJK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872" y="115"/>
+            <point key="canvasLocation" x="871.01449275362324" y="114.94565217391305"/>
         </scene>
         <!--Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
